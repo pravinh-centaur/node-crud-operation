@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const db = require('./db_connect')
+const knex = require('./db_connect')
 
 //READ
 router.get("/" , (req,res) => {
-    db.query('SELECT * FROM test')
+    knex.select('*').from('test')
         .then(data => res.send(data))
         .catch(err => console.log(err))
 })
@@ -14,7 +14,7 @@ router.get("/" , (req,res) => {
 router.post('/', (req, res) => {
     const {name, description} = req.body
 
-    db.query('INSERT INTO test (name, description) VALUES [?, ?]', [name, description])
+    knex('test').insert({name, description})
         .then(res.send('Created.'))
         .catch(err => console.log(err))
 })
@@ -24,7 +24,10 @@ router.put('/:id', (req, res) => {
     const id = req.params.id
     const {name, description} = req.body
 
-    db.query('UPDATE test SET name = ?, description = ? WHERE id = ?', [name, description, id])
+    knex('test').where('id', id).update({
+        'name': name,
+        'description': description
+    })
         .then(res.send('Updated.'))
         .catch(err => console.log(err))
 })
@@ -33,7 +36,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const id = req.params.id
 
-    db.query('DELETE FROM test WHERE id = ?', [id])
+    knex('test').where('id', id).del()
         .then(res.send('Deleted.'))
         .catch(err => console.log(err))
     

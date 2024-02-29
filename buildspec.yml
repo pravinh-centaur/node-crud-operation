@@ -7,9 +7,10 @@ phases:
     commands:
       - npm install -g typescript
       - npm install
+      - npm install -D tsx
   build:
     commands:
-      - tsc
+      - npx tsx index.ts
 
 artifacts:
   files:

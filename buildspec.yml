@@ -9,11 +9,10 @@ phases:
       - npm install
   build:
     commands:
-      - tsc
+      - npm run build
 
 artifacts:
   files:
     - package.json
     - package-lock.json
-    - 'build/**/*'
   discard-paths: yes

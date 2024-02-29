@@ -43,7 +43,7 @@ router.delete('/data/:id', (req, res) => {
 })
 
 //VERSION
-router.get("/created" , (req,res) => {
+router.get("/" , (req,res) => {
     res.send('Version = 0.0.1')
 })
 

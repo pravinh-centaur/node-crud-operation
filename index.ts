@@ -1,13 +1,15 @@
 import express from 'express';
-//import route from './operations'
+import route from './operations'
 
 const app = express()
 
 app.use(express.json())
-//app.use('/test', route)
+app.use('/test', route)
+
+const port = process.env.PORT || 3000
 
 //Start server
-app.listen(3000, () => console.log('server started at http://localhost:3000'))
+app.listen(port, () => console.log(`server started at http://localhost:${port}`))
 
 app.get("/" , (req,res) => {
     res.send('Hello World')
@@ -15,6 +17,6 @@ app.get("/" , (req,res) => {
 
 //VERSION
 app.get("/version" , (req,res) => {
-    res.send('Version = 0.0.1')
+    res.send('Version = 0.0.2')
 })
 

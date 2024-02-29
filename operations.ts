@@ -42,9 +42,6 @@ router.delete('/data/:id', (req, res) => {
     
 })
 
-//VERSION
-router.get("/" , (req,res) => {
-    res.send('Version = 0.0.1')
-})
+
 
 export default router;

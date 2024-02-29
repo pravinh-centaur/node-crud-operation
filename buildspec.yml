@@ -7,7 +7,7 @@ phases:
     commands:
       - npm install -g typescript
       - npm install
-      - npm install express
+
   build:
     commands:
       - tsc
@@ -17,4 +17,5 @@ artifacts:
     - package.json
     - package-lock.json
     - 'build/**/*'
+    
   discard-paths: yes

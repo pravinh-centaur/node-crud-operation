@@ -17,6 +17,6 @@ app.get("/" , (req,res) => {
 
 //VERSION
 app.get("/version" , (req,res) => {
-    res.send('Version = 0.0.2')
+    res.send('Version = 0.0.3')
 })
 
